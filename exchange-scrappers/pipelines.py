@@ -58,16 +58,16 @@ class CoinbaseScrapper(object):
                 )
 
         # send notification if added only
-        if (len(added_currencies) > 0):
+        if added_currencies:
             telegram_bot = settings.get('TELEGRAM_BOT')
             bot = telepot.Bot(telegram_bot['token'])
 
-            message = """          
-            <b>coinbase listed cryptos : </b> <i>%s</i>
-            <b>added : </b> <i>%s</i>
-            <b>removed : </b> <i>%s</i>
+            message = f"""          
+            <b>coinbase listed cryptos : </b> <i>{len(items["value"])}</i>
+            <b>added : </b> <i>{added_currencies}</i>
+            <b>removed : </b> <i>{removed_currencies}</i>
     
-            """ % (str(len(items["value"])), str(added_currencies), str(removed_currencies))
+            """
 
             bot.sendMessage(
                 telegram_bot['receiver_id'],
