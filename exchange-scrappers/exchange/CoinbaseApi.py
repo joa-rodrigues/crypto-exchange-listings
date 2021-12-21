@@ -8,7 +8,7 @@ import requests
 import json
 
 
-class PublicAPI():
+class CoinbaseApi():
 
     def __init__(self) -> None:
         # options
