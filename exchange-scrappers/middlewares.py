@@ -1,7 +1,7 @@
 import json
 from scrapy import signals
 from scrapy.http import TextResponse
-import cbpro
+from exchanges.coinbase.api import PublicAPI as CBPublicAPI
 
 
 class CoinbaseMiddleware:
@@ -13,8 +13,8 @@ class CoinbaseMiddleware:
         return s
 
     def process_request(self, request, spider):
-        self.public_client = cbpro.PublicClient()
-        crypto_currencies = self.public_client.get_currencies()
+        api = CBPublicAPI()
+        crypto_currencies = api.get_currencies()
 
         return TextResponse(
             url=request.url,
