@@ -2,7 +2,6 @@ import datetime
 
 import pymongo
 import telepot
-from scrapy.mail import MailSender
 from scrapy.utils.project import get_project_settings
 
 settings = get_project_settings()
