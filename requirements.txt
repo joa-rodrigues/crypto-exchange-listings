@@ -5,3 +5,4 @@ twistedschedule
 telepot
 apscheduler
 requests
+pymongo
