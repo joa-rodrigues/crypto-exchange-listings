@@ -89,7 +89,10 @@ class BinanceScrapper(object):
 
     def process_item(self, items, spider):
         binance_pairs = items["value"]
-        binance_pairs_keys = (o["symbol"] for o in binance_pairs)
+        binance_pairs_keys = []
+        for binance_pair in binance_pairs:
+            key = binance_pair["baseAsset"] + "-" + binance_pair["quoteAsset"]
+            binance_pairs_keys.append(key)
 
         mongo_pairs = self.binance_crypto_lists.find()
         mongo_pairs_keys = (o["key"] for o in mongo_pairs)
